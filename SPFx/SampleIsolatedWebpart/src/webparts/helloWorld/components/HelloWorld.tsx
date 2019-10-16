@@ -1,15 +1,7 @@
 import * as React from 'react';
 import styles from './HelloWorld.module.scss';
-import { SPHttpClient, SPHttpClientResponse, HttpClient, HttpClientResponse, MSGraphClientFactory, MSGraphClient, AadHttpClientFactory, AadHttpClient } from '@microsoft/sp-http';
-import { PageContext } from '@microsoft/sp-page-context';
-
-export interface IHelloWordProps {
-  pageContext: PageContext,
-  spHttpClient: SPHttpClient
-  httpClient: HttpClient,
-  graphClientFactory: MSGraphClientFactory,
-  aadHttpClientFactory: AadHttpClientFactory
-}
+import { SPHttpClient, SPHttpClientResponse, HttpClient, HttpClientResponse, MSGraphClient, AadHttpClient } from '@microsoft/sp-http';
+import { IHelloWordProps } from './IHelloWordProps';
 
 export interface IHelloWorldState {
   PostBody: string;
@@ -87,7 +79,7 @@ export default class HelloWorld extends React.Component<IHelloWordProps, IHelloW
               Lastname: response.surname            
             }
           });
-        })
+        });
       }); 
   }
 
@@ -116,7 +108,7 @@ export default class HelloWorld extends React.Component<IHelloWordProps, IHelloW
     let call2Render = this.state.Lists.length > 0 ? <ul>
     {
       this.state.Lists.map(list => {
-        return <li>{list.Title}</li>
+        return <li>{list.Title}</li>;
       })
     }
     </ul> : null;
